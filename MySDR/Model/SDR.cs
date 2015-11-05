@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MySDR.Model
 {
     /// <summary>
-    /// 寄件
+    ///     寄件
     /// </summary>
     public class SDR
     {
@@ -18,9 +14,10 @@ namespace MySDR.Model
         //以由单个竖线’|’来间隔的10个数字0来表示输入的结束,其后的任何输入行都将被忽略
 
         /// <summary>
-        /// SDR号
+        ///     SDR号
         /// </summary>
         public string SDRNO { get; set; }
+
         public string Receiver { get; set; }
         public string Prior { get; set; }
         public DateTime SendDate { get; set; }
@@ -28,42 +25,44 @@ namespace MySDR.Model
         public bool IsDelay { get; set; }
         public decimal Weight { get; set; }
         public string SDRType { get; set; }
-        public decimal Qty{ get; set; }
+        public decimal Qty { get; set; }
         public decimal Price { get; set; }
 
         /// <summary>
-        /// 包裹
+        ///     包裹
         /// </summary>
         public Parcel Parcel { get; set; }
 
         /// <summary>
-        /// 计费批量余数
+        ///     计费批量余数
         /// </summary>
-        public decimal LotMod {
+        public decimal LotMod
+        {
             get { return Weight%Parcel.Lot; }
         }
 
         /// <summary>
-        /// 金额
+        ///     金额
         /// </summary>
-        public decimal Amount {
+        public decimal Amount
+        {
             get { return Qty*Price; }
         }
 
         /// <summary>
-        /// 序列化输出信息
+        ///     序列化输出信息
         /// </summary>
         /// <returns></returns>
         public string InfoString()
         {
             var sp = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}"
-            ,SDRNO,Receiver,Prior,SendDate.ToString("yyyy/MM/dd"),Payway,(IsDelay ? "Y" : "N"),Weight,SDRType,Qty,Price);
+                , SDRNO, Receiver, Prior, SendDate.ToString("yyyy/MM/dd"), Payway, (IsDelay ? "Y" : "N"), Weight,
+                SDRType, Qty, Price);
             return sp;
         }
 
-
         /// <summary>
-        /// 反序化对象
+        ///     反序化对象
         /// </summary>
         /// <param name="SDRstr"></param>
         /// <returns></returns>

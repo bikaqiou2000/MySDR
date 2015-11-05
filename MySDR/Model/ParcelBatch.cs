@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MySDR.Model
 {
     /// <summary>
-    /// 可相互调配的包裹集合
-    /// 主要用于包裹优化分析
+    ///     可相互调配的包裹集合
+    ///     主要用于包裹优化分析
     /// </summary>
     public class ParcelBatch : List<Parcel>
     {
-
         /// <summary>
-        /// 构造函数
+        ///     构造函数
         /// </summary>
         /// <param name="lot"></param>
         public ParcelBatch(decimal lot)
@@ -25,12 +19,12 @@ namespace MySDR.Model
         }
 
         /// <summary>
-        /// 重量
+        ///     重量
         /// </summary>
-        public decimal Lot{ get;private set; }
+        public decimal Lot { get; }
 
         /// <summary>
-        /// 重量
+        ///     重量
         /// </summary>
         public decimal Weight
         {
@@ -38,17 +32,18 @@ namespace MySDR.Model
         }
 
         /// <summary>
-        /// 批量余数
+        ///     批量余数
         /// </summary>
         public decimal LotMod
         {
-            get { return Weight % Lot; }
+            get { return Weight%Lot; }
         }
 
         /// <summary>
-        /// 送货成本
+        ///     送货成本
         /// </summary>
-        public decimal SendingCost {
+        public decimal SendingCost
+        {
             get { return this.Select(x => x.SendingCost).Sum(); }
         }
     }

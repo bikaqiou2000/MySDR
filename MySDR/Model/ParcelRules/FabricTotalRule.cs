@@ -7,9 +7,9 @@ namespace MySDR.Model.ParcelRules
         private const string Garment_Type = "fabric";
         private const int Max_Num = 25;
 
-        public FabricTotalRule(Parcel parcel): base(parcel)
+        public FabricTotalRule(Parcel parcel) : base(parcel)
         {
-            Name = string.Format("{0}件必须不超过{1}件",Garment_Type,Max_Num) ;
+            Name = string.Format("{0}件必须不超过{1}件", Garment_Type, Max_Num);
         }
 
         public override CheckResult Check(SDR sdr)

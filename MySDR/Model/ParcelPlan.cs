@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.IO.Ports;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 using MySDR.Model.PlanRules;
 
 namespace MySDR.Model
 {
     /// <summary>
-    /// 送货计划
+    ///     送货计划
     /// </summary>
     public class ParcelPlan
     {
@@ -20,6 +16,7 @@ namespace MySDR.Model
         private const string Common_Name = "经济";
 
         #region 构造函数
+
         public ParcelPlan()
         {
             Parcels = new List<Parcel>();
@@ -27,11 +24,11 @@ namespace MySDR.Model
             inputSdrs = new List<SDR>();
             InitRule();
             IntiPrice();
-            DelaySdrs = new DelaySdrPack(Lot_Num,Prices[Common_Name]);
+            DelaySdrs = new DelaySdrPack(Lot_Num, Prices[Common_Name]);
         }
 
         /// <summary>
-        /// 初始化送货计划规则
+        ///     初始化送货计划规则
         /// </summary>
         private void InitRule()
         {
@@ -40,7 +37,7 @@ namespace MySDR.Model
         }
 
         /// <summary>
-        /// 初始送货单价
+        ///     初始送货单价
         /// </summary>
         private void IntiPrice()
         {
@@ -48,48 +45,51 @@ namespace MySDR.Model
             Prices[Prior_Name] = 30;
             Prices[Common_Name] = 20;
         }
+
         #endregion
 
         #region 属性
 
         /// <summary>
-        /// 单价表
+        ///     单价表
         /// </summary>
-        private Dictionary<string,decimal> Prices { get; set; } 
+        private Dictionary<string, decimal> Prices { get; set; }
 
         /// <summary>
-        /// 输入数据
+        ///     输入数据
         /// </summary>
         public string InputStr { get; set; }
-        /// <summary>
-        /// 延时件集合
-        /// </summary>
-        public DelaySdrPack DelaySdrs{ get; private set; }
 
         /// <summary>
-        /// 包裹集合
+        ///     延时件集合
+        /// </summary>
+        public DelaySdrPack DelaySdrs { get; }
+
+        /// <summary>
+        ///     包裹集合
         /// </summary>
         public List<Parcel> Parcels { get; set; }
 
         /// <summary>
-        /// 批次集合
+        ///     批次集合
         /// </summary>
         public List<ParcelBatch> Batchs { get; set; }
 
         /// <summary>
-        /// 输入包裹
+        ///     输入包裹
         /// </summary>
         private List<SDR> inputSdrs { get; set; }
 
         /// <summary>
-        /// 计划规则表
+        ///     计划规则表
         /// </summary>
         public List<PlanRule> Rules { get; set; }
 
         /// <summary>
-        /// 包裹总价值
+        ///     包裹总价值
         /// </summary>
-        public decimal SendingCost {
+        public decimal SendingCost
+        {
             get { return Parcels.Sum(x => x.SendingCost) + DelaySdrs.SendingCost; }
         }
 
@@ -98,7 +98,7 @@ namespace MySDR.Model
         #region 方法
 
         /// <summary>
-        /// 创建包裹计划
+        ///     创建包裹计划
         /// </summary>
         /// <param name="inputstr">输入数据</param>
         public void WorkPlan(string inputstr)
@@ -108,7 +108,7 @@ namespace MySDR.Model
         }
 
         /// <summary>
-        /// 创建包裹计划
+        ///     创建包裹计划
         /// </summary>
         public void WorkPlan()
         {
@@ -118,44 +118,38 @@ namespace MySDR.Model
             //生成SDR输入
             var sdrs = SDRInput.GetSdrs(InputStr);
             inputSdrs = SortSdr(sdrs); //排列
+            var idx = 1;
             foreach (var sdr in inputSdrs)
             {
-
                 //查找符合条件的包裹
                 var maybeParcels = FindParcel(sdr);
                 var suc = false;
-
                 foreach (var maybeparcel in maybeParcels)
                 {
                     //逐个包裹尝试添加
                     suc = maybeparcel.AddSDR(sdr);
-                    if (suc) break; //TODO 还需考虑添加包裹批
-                    
+                    if (suc) break;
                 }
                 if (!suc)
                 {
                     //尝试创建包裹
                     var price = Prices[sdr.Prior];
                     var parc = new Parcel(Lot_Num, price, sdr);
-                    if (AddParcel(parc))
-                    {
-                        //TODO 还需要考虑创建包裹批
-                    }
-                    else
+                    parc.Name = string.Format("Pack{0}", idx++);
+                    var res = AddParcel(parc);
+                    if (!res)
                     {
                         //否则放入延时件
-                        //TODO 暂时不调整
                         //sdr.IsDelay = true; //设置成延时件
                         DelaySdrs.Add(sdr);
                     }
-
                 }
             }
         }
 
 
         /// <summary>
-        /// 条件一个包裹
+        ///     条件一个包裹
         /// </summary>
         /// <param name="parcel">包裹</param>
         /// <returns>成功：True,失败：false</returns>
@@ -173,31 +167,30 @@ namespace MySDR.Model
 
 
         /// <summary>
-        /// 根据寄件查找适合的包裹
+        ///     根据寄件查找适合的包裹
         /// </summary>
         /// <param name="sdr">寄件</param>
         /// <returns>包裹集合</returns>
-        private List<Parcel> FindParcel( SDR sdr )
+        private List<Parcel> FindParcel(SDR sdr)
         {
-
             //必须是相同收件人，相同日期，相同优先级，相同付费方，包裹未满
             var ents = Parcels.Where(x =>
                 x.Receiver == sdr.Receiver
                 && x.SendDate == sdr.SendDate
                 && x.Prior == sdr.Prior
                 && x.Payway == sdr.Payway
-                && !x.IsFull 
-            ).ToList();
+                && !x.IsFull
+                ).ToList();
             return ents;
         }
 
         /// <summary>
-        /// 对SDR重新排序 
-        /// 规则 优先 => 延时 => 普通 
+        ///     对SDR重新排序
+        ///     规则 优先 => 延时 => 普通
         /// </summary>
         /// <param name="sdrs">输入SDR</param>
         /// <returns></returns>
-        private List<SDR> SortSdr(List<SDR> sdrs )
+        private List<SDR> SortSdr(List<SDR> sdrs)
         {
             var res = new List<SDR>();
             //先添加优先型几件
@@ -213,7 +206,7 @@ namespace MySDR.Model
         }
 
         /// <summary>
-        /// 输出送货计划
+        ///     输出送货计划
         /// </summary>
         /// <returns>结果字符</returns>
         public string ShowSdrPlan()
@@ -227,7 +220,7 @@ namespace MySDR.Model
         }
 
         /// <summary>
-        /// 输出延时件
+        ///     输出延时件
         /// </summary>
         /// <returns>结果字符</returns>
         public string ShowDelaySdrs()
@@ -235,8 +228,6 @@ namespace MySDR.Model
             return DelaySdrs.InfoString();
         }
 
-
         #endregion
-
     }
 }

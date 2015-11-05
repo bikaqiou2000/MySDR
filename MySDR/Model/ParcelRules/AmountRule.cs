@@ -6,9 +6,9 @@ namespace MySDR.Model.ParcelRules
     {
         private const decimal Max_Num = 600;
 
-        public AmountRule(Parcel parcel): base(parcel)
+        public AmountRule(Parcel parcel) : base(parcel)
         {
-            Name = string.Format("包裹价值必须不超过{0}USD",Max_Num) ;
+            Name = string.Format("包裹价值必须不超过{0}USD", Max_Num);
         }
 
         public override CheckResult Check(SDR sdr)
@@ -16,7 +16,7 @@ namespace MySDR.Model.ParcelRules
             var copySdr = Parcel.Sdrs.ToList();
             copySdr.Add(sdr);
             var res = new CheckResult();
-            if (copySdr.Select(x => x.Amount ).Sum() > Max_Num)
+            if (copySdr.Select(x => x.Amount).Sum() > Max_Num)
             {
                 res.IsPass = false;
                 res.Messages.Add(Name);

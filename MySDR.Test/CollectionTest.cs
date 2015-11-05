@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MySDR.Test
 {
+    /// <summary>
+    /// 集合运算测试
+    /// </summary>
     public class CollectionTest
     {
         public static void CollectionMath_Test()
         {
-            var arr1 = new int[] {1, 2, 3, 4, 5, 6};
-            var arr2 = new int[] {2, 9};
+            var arr1 = new[] {1, 2, 3, 4, 5, 6};
+            var arr2 = new[] {2, 9};
             var test1 = arr1.Intersect(arr2);
             var test2 = arr1.Union(arr2);
             var test3 = arr1.Except(arr2);
@@ -26,7 +27,7 @@ namespace MySDR.Test
 
         public static void CollectionCopy_Test()
         {
-            var ls1 = new List<int>() {1, 2, 3};
+            var ls1 = new List<int> {1, 2, 3};
             var ls2 = ls1.ToList();
             Console.WriteLine(ls1 == ls2);
 

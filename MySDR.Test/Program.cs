@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySDR.Model;
 
 namespace MySDR.Test
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //SDRTest.SDRDeSerializ_Test();
             //Console.WriteLine("-------------------------------------------");
@@ -22,6 +17,5 @@ namespace MySDR.Test
             ParcelPlanTest.Plan_Test();
             Console.ReadLine();
         }
-
     }
 }

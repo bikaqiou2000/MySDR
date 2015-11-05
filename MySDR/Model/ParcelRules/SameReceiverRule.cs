@@ -3,7 +3,7 @@
 namespace MySDR.Model.ParcelRules
 {
     /// <summary>
-    /// 必须相同的走货时间
+    ///     必须相同的走货时间
     /// </summary>
     public class SameReceiverRule : ParcelRule
     {

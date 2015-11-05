@@ -143,4 +143,10 @@
  SDR011|Jarod|经济|2015/10/12|3rd Party|Y|12|Document|1|1
  0|0|0|0|0|0|0|0|0|0</value>
   </data>
+  <metadata name="tmRun.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>57</value>
+  </metadata>
 </root>

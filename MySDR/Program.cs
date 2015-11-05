@@ -1,23 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySDR.Presenter;
+using MySDR.View;
 
 namespace MySDR
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        ///     The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //初始化兑现
+            //初始化对象
             var frmPm = new MainFormPM();
             var frm = new MainForm(frmPm);
 

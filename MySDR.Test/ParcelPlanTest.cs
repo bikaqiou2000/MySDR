@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using MySDR.Model;
 
 namespace MySDR.Test
 {
+    /// <summary>
+    /// 包裹测试
+    /// </summary>
     public class ParcelPlanTest
     {
-        
-
         public static void Plan_Test()
         {
             var ipstr = @"SDR001|Jarod|经济|2015/10/12|3rd Party|N|0.3|Document|2|2
@@ -39,23 +35,26 @@ SDR011|Jarod|经济|2015/10/12|3rd Party|Y|12|Garment|12|49
 SDR011|Jarod|经济|2015/10/12|3rd Party|Y|12|Document|1|1
 0|0|0|0|0|0|0|0|0|0";
 
-            var plan = new ParcelPlan();
-            plan.InputStr = ipstr;
-            var t1 = DateTime.Now;
+            Console.Title = "送货计划测试";
+            var plan = new ParcelPlan {InputStr = ipstr};
+
+            //var t1 = DateTime.Now;
             plan.WorkPlan();
-            var t2 = DateTime.Now;
+            //var t2 = DateTime.Now;
             Console.WriteLine("--------------------------原输入-----------------------------");
             Console.WriteLine(ipstr);
-            Console.WriteLine("--------------------------送计划----------------------------");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("--------------------------送货计划----------------------------");
             Console.WriteLine(plan.ShowSdrPlan());
-            Console.WriteLine("---------------------------延迟件---------------------------");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("---------------------------延时件---------------------------");
             Console.WriteLine(plan.ShowDelaySdrs());
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("---------------------------总预估成本---------------------------");
             Console.WriteLine("总耗费(USD)：{0}", plan.SendingCost);
-            var timespend = (t2 - t1).Milliseconds;
-            Console.WriteLine("总耗时：{0} 毫秒",timespend);
+            Console.ForegroundColor = ConsoleColor.White;
+            //var timespend = (t2 - t1).Milliseconds;
+            //Console.WriteLine("总耗时：{0} 毫秒",timespend);
         }
-        
-      
     }
 }

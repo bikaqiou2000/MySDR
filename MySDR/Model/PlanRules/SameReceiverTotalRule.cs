@@ -1,22 +1,21 @@
-﻿using  System;
-using  System.Linq;
+﻿using System.Linq;
 
 namespace MySDR.Model.PlanRules
 {
     /// <summary>
-    /// 包裹规则
+    ///     包裹规则
     /// </summary>
-    public  class SameReceiverTotalRule : PlanRule
+    public class SameReceiverTotalRule : PlanRule
     {
         private const int Max_Num = 2;
 
-        public SameReceiverTotalRule(ParcelPlan plan):base(plan)
+        public SameReceiverTotalRule(ParcelPlan plan) : base(plan)
         {
-            Name = string.Format("同一收件人一天最多{0}个包裹",Max_Num);
+            Name = string.Format("同一收件人一天最多{0}个包裹", Max_Num);
         }
 
         /// <summary>
-        /// 检查包裹
+        ///     检查包裹
         /// </summary>
         /// <param name="parcel"></param>
         /// <returns></returns>
@@ -33,5 +32,4 @@ namespace MySDR.Model.PlanRules
             return res;
         }
     }
-    
 }

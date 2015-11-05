@@ -3,7 +3,7 @@
 namespace MySDR.Model.ParcelRules
 {
     /// <summary>
-    /// 必须相同的走货时间
+    ///     必须相同的走货时间
     /// </summary>
     public class SamePayWayRule : ParcelRule
     {
@@ -22,7 +22,6 @@ namespace MySDR.Model.ParcelRules
                 res.Messages.Add(Name);
             }
             return res;
-
         }
 
         public override CheckResult Check()

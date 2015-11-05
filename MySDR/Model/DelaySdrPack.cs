@@ -2,34 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MySDR.Model
 {
-    public class DelaySdrPack: List<SDR>
+    public class DelaySdrPack : List<SDR>
     {
         /// <summary>
-        /// 构造函数
+        ///     构造函数
         /// </summary>
         /// <param name="lot"></param>
-        public DelaySdrPack(decimal lot,decimal price)
+        public DelaySdrPack(decimal lot, decimal price)
         {
             Lot = lot;
             Price = price;
         }
 
         /// <summary>
-        /// 重量
+        ///     重量
         /// </summary>
-        public decimal Lot{ get;private set; }
+        public decimal Lot { get; }
 
         /// <summary>
-        /// 单价
+        ///     单价
         /// </summary>
-        public decimal Price { get; private set; }
+        public decimal Price { get; }
 
         /// <summary>
-        /// 重量
+        ///     重量
         /// </summary>
         public decimal Weight
         {
@@ -37,25 +36,23 @@ namespace MySDR.Model
         }
 
         /// <summary>
-        /// 批量余数
+        ///     批量余数
         /// </summary>
         public decimal LotMod
         {
-            get { return Weight % Lot; }
+            get { return Weight%Lot; }
         }
 
         /// <summary>
-        /// 送货成本
+        ///     送货成本
         /// </summary>
-        public decimal SendingCost {
-            get
-            {
-                return Math.Ceiling(Weight / Lot) * Price;
-            }
+        public decimal SendingCost
+        {
+            get { return Math.Ceiling(Weight/Lot)*Price; }
         }
 
         /// <summary>
-        /// 显示包裹信息
+        ///     显示包裹信息
         /// </summary>
         /// <returns>结果字符串</returns>
         public string InfoString()
@@ -68,6 +65,5 @@ namespace MySDR.Model
             }
             return sb.ToString();
         }
-
     }
 }

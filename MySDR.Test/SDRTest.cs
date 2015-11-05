@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using MySDR.Model;
 
 namespace MySDR.Test
 {
+    /// <summary>
+    /// 寄件类测试
+    /// </summary>
     public class SDRTest
     {
         public static void SDRDeSerializ_Test()
@@ -21,7 +19,7 @@ namespace MySDR.Test
             Console.WriteLine(ent.InfoString());
             Console.WriteLine(ent2);
         }
-        
+
         public static void SDRsInput_Test()
         {
             var str = @"SDR010|Jarod|经济|2015/10/12|3rd Party|N|5|Fabric|8|1.5

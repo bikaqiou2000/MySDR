@@ -3,7 +3,7 @@
 namespace MySDR.Model.ParcelRules
 {
     /// <summary>
-    /// 必须相同的经济型和优先型
+    ///     必须相同的经济型和优先型
     /// </summary>
     public class SamePriorTypeRule : ParcelRule
     {
