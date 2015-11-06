@@ -3,7 +3,7 @@
     /// <summary>
     ///     送货计划优化器
     /// </summary>
-    public class SendingPlanOptimise
+    public abstract class PlanOptimise
     {
     }
 }
