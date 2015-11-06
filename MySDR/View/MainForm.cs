@@ -11,7 +11,7 @@ namespace MySDR.View
     /// </summary>
     public partial class MainForm : Form, IMainForm
     {
-        private readonly string[] busyStrs = {"—", @"\", "|", "/"};
+        private readonly string[] busyStrs = {"-", @"\", "|", "/"};
         private int idx;
 
         public MainForm(IMainFormPM pm)
@@ -44,7 +44,7 @@ namespace MySDR.View
         /// </summary>
         public string DelaySDRString
         {
-            set { BeginInvoke(new Action(() => rtbDelay.Text = value)); }
+            set { BeginInvoke(new Action(() => rtbDelay.Text = value)); } 
         }
 
         //运算

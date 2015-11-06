@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "SDR送货计划";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+
+<div id="errMsg" class="alert alert-danger" role="alert" style="display: none;">
+    <span>出错了</span>
+</div>
+
+<div class="row ">
+    <form>
+        <div class="form-group ">
+            <label>请输入数据</label>
+            <textarea id="inputSdr" name="inputSdr" class="form-control" rows="10" style="min-width: 100%"></textarea>
+        </div>
+    </form>
+    <p></p>
+    <button id="btnExe" class="btn btn-primary">提交</button>
+</div>
+
+<p></p>
+
+<div class="row panel panel-default" id="showCotainer" style="display: none;">
+    <div class="panel-heading">
+        <h3 class="panel-title">运算结果</h3>
+    </div>
+    <div class="panel-body">
+        <h4>包裹计划</h4>
+        <pre id="divPack">packs</pre>
+        <hr />
+        <h4>延时件</h4>
+        <pre id="divDelay">delays</pre>
+    </div>
+</div>
+
+@section scripts
+{
+<script>
+    $(function () {
+        var str = "SDR001|Jarod|经济|2015/10/12|3rd Party|N|0.3|Document|2|2 \n\
+SDR001|Jarod|经济|2015/10/12|3rd Party|N|0.3|Garment|3|16 \n\
+SDR002|Joey|经济|2015/10/12|3rd Party|N|0.8|Document|1|1 \n\
+SDR002|Joey|经济|2015/10/12|3rd Party|N|0.8|Garment|5|15 \n\
+SDR003|Keith|经济|2015/10/12|3rd Party|N|0.8|Fabric|10|2 \n\
+SDR003|Keith|经济|2015/10/12|3rd Party|N|0.8|Document|1|1 \n\
+SDR003|Keith|经济|2015/10/12|3rd Party|N|0.8|Garment|6|15 \n\
+SDR004|Jarod|优先|2015/10/12|3rd Party|N|0.2|Garment|2|25 \n\
+SDR004|Jarod|优先|2015/10/12|3rd Party|N|0.2|Document|1|1 \n\
+SDR005|Vincent|经济|2015/10/12|3rd Party|N|7.2|Document|1|1 \n\
+SDR005|Vincent|经济|2015/10/12|3rd Party|N|7.2|Sub-Material|150|0.5 \n\
+SDR006|Keith|经济|2015/10/12|3rd Party|N|0.8|Document|1|1 \n\
+SDR006|Keith|经济|2015/10/12|3rd Party|N|0.8|Garment|46|12 \n\
+SDR007|Jarod|经济|2015/10/12|3rd Party|N|5|Sub-Material|135|0.7 \n\
+SDR007|Jarod|经济|2015/10/12|3rd Party|N|5|Document|1|1 \n\
+SDR008|Joey|经济|2015/10/12|3rd Party|N|7.2|Document|1|1 \n\
+SDR008|Joey|经济|2015/10/12|3rd Party|N|7.2|Garment|5|15 \n\
+SDR008|Joey|经济|2015/10/12|3rd Party|N|7.2|Fabric|12|1.2 \n\
+SDR009|Tommy|经济|2015/10/12|3rd Party|N|0.8|Garment|5|15 \n\
+SDR010|Jarod|经济|2015/10/12|3rd Party|N|5|Fabric|8|1.5 \n\
+SDR010|Jarod|经济|2015/10/12|3rd Party|N|5|Document|1|1 \n\
+SDR011|Jarod|经济|2015/10/12|3rd Party|Y|12|Garment|12|49 \n\
+SDR011|Jarod|经济|2015/10/12|3rd Party|Y|12|Document|1|1 \n\
+0|0|0|0|0|0|0|0|0|0";
+
+        $("#inputSdr").val(str);
+
+        $("#btnExe").click(function () {
+            //$("#showCotainer").toggle(500);
+            var str = $("#inputSdr").val();
+            //关闭显示
+            $("#errMsg").hide(500);
+            $("#showCotainer").hide(500);
+            $.ajax({
+                url: "/api/ParcelPlan",
+                data: { inputStr: str },
+                //contentType: "application/json;",
+                type: 'POST',
+                dataType: 'json'
+            })
+                .done(function (data) {
+                    console.log(data);
+                    if (data.Success) {
+                        $("#divPack").text(data.Packs);
+                        $("#divDelay").text(data.Delays);
+                        $("#showCotainer").show(500);
+                    }
+                    else {
+                        $("#errMsg").show(500);
+                    }
+                })
+                .fail(function (err) {
+                    $("#errMsg").show(500);
+                });
+
+        });
+    });
+</script>
+}

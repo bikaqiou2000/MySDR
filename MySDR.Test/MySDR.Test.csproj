@@ -55,9 +55,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MySDR\MySDR.csproj">
-      <Project>{91214d2a-4a51-4033-991a-58d50a1f11e6}</Project>
-      <Name>MySDR</Name>
+    <ProjectReference Include="..\MySDR.Core\MySDR.Core.csproj">
+      <Project>{0d35a490-5f30-4af4-80fb-18755150212b}</Project>
+      <Name>MySDR.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

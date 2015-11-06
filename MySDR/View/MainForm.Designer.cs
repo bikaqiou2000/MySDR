@@ -44,20 +44,21 @@
             // lblInput
             // 
             this.lblInput.AutoSize = true;
-            this.lblInput.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblInput.Location = new System.Drawing.Point(13, 15);
+            this.lblInput.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblInput.Location = new System.Drawing.Point(10, 12);
+            this.lblInput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInput.Name = "lblInput";
-            this.lblInput.Size = new System.Drawing.Size(50, 25);
+            this.lblInput.Size = new System.Drawing.Size(39, 20);
             this.lblInput.TabIndex = 1;
             this.lblInput.Text = "输入";
             // 
             // btnCall
             // 
-            this.btnCall.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCall.Location = new System.Drawing.Point(1048, 625);
-            this.btnCall.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCall.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCall.Location = new System.Drawing.Point(786, 500);
+            this.btnCall.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCall.Name = "btnCall";
-            this.btnCall.Size = new System.Drawing.Size(148, 35);
+            this.btnCall.Size = new System.Drawing.Size(111, 28);
             this.btnCall.TabIndex = 2;
             this.btnCall.Text = "送货运算";
             this.btnCall.UseVisualStyleBackColor = true;
@@ -65,59 +66,61 @@
             // 
             // rtbInput
             // 
-            this.rtbInput.Location = new System.Drawing.Point(16, 42);
-            this.rtbInput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rtbInput.Location = new System.Drawing.Point(12, 34);
+            this.rtbInput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rtbInput.Name = "rtbInput";
-            this.rtbInput.Size = new System.Drawing.Size(563, 569);
+            this.rtbInput.Size = new System.Drawing.Size(423, 456);
             this.rtbInput.TabIndex = 3;
             this.rtbInput.Text = resources.GetString("rtbInput.Text");
             // 
             // rtbOutput
             // 
-            this.rtbOutput.Location = new System.Drawing.Point(593, 42);
-            this.rtbOutput.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rtbOutput.Location = new System.Drawing.Point(445, 34);
+            this.rtbOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rtbOutput.Name = "rtbOutput";
-            this.rtbOutput.Size = new System.Drawing.Size(603, 346);
+            this.rtbOutput.Size = new System.Drawing.Size(453, 278);
             this.rtbOutput.TabIndex = 4;
             this.rtbOutput.Text = "";
             // 
             // lblOutput
             // 
             this.lblOutput.AutoSize = true;
-            this.lblOutput.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblOutput.Location = new System.Drawing.Point(591, 15);
+            this.lblOutput.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblOutput.Location = new System.Drawing.Point(443, 12);
+            this.lblOutput.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOutput.Name = "lblOutput";
-            this.lblOutput.Size = new System.Drawing.Size(88, 25);
+            this.lblOutput.Size = new System.Drawing.Size(69, 20);
             this.lblOutput.TabIndex = 1;
             this.lblOutput.Text = "输出包裹";
             // 
             // rtbDelay
             // 
-            this.rtbDelay.Location = new System.Drawing.Point(593, 425);
-            this.rtbDelay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rtbDelay.Location = new System.Drawing.Point(445, 340);
+            this.rtbDelay.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rtbDelay.Name = "rtbDelay";
-            this.rtbDelay.Size = new System.Drawing.Size(603, 186);
+            this.rtbDelay.Size = new System.Drawing.Size(453, 150);
             this.rtbDelay.TabIndex = 4;
             this.rtbDelay.Text = "";
             // 
             // lblDelay
             // 
             this.lblDelay.AutoSize = true;
-            this.lblDelay.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblDelay.Location = new System.Drawing.Point(591, 398);
+            this.lblDelay.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblDelay.Location = new System.Drawing.Point(443, 318);
+            this.lblDelay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDelay.Name = "lblDelay";
-            this.lblDelay.Size = new System.Drawing.Size(69, 25);
+            this.lblDelay.Size = new System.Drawing.Size(54, 20);
             this.lblDelay.TabIndex = 1;
             this.lblDelay.Text = "延时件";
             // 
             // lblProcessStatus
             // 
-            this.lblProcessStatus.AutoSize = true;
-            this.lblProcessStatus.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProcessStatus.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProcessStatus.ForeColor = System.Drawing.Color.SeaGreen;
-            this.lblProcessStatus.Location = new System.Drawing.Point(13, 630);
+            this.lblProcessStatus.Location = new System.Drawing.Point(11, 492);
+            this.lblProcessStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProcessStatus.Name = "lblProcessStatus";
-            this.lblProcessStatus.Size = new System.Drawing.Size(0, 22);
+            this.lblProcessStatus.Size = new System.Drawing.Size(56, 28);
             this.lblProcessStatus.TabIndex = 5;
             // 
             // tmRun
@@ -127,9 +130,9 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1212, 673);
+            this.ClientSize = new System.Drawing.Size(909, 538);
             this.Controls.Add(this.lblProcessStatus);
             this.Controls.Add(this.rtbDelay);
             this.Controls.Add(this.rtbOutput);
@@ -139,7 +142,7 @@
             this.Controls.Add(this.lblOutput);
             this.Controls.Add(this.lblInput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainForm";
             this.Text = "包裹安排计划";
             this.ResumeLayout(false);
